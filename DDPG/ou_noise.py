@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 # based on http://math.stackexchange.com/questions/1287634/implementing-ornstein-uhlenbeck-in-matlab
 class OrnsteinUhlenbeckActionNoise:
 	def __init__(self, mu, sigma=0.2, theta=0.15, dt=1e-2, x0=None):
+		"""
+		Initializer.
+		You must pass in 'mu', cause it has no default value.
+		"""
 		self.theta = theta
 		self.mu = mu
 		self.sigma = sigma
@@ -26,14 +30,14 @@ class OrnsteinUhlenbeckActionNoise:
 		return 'OrnsteinUhlenbeckActionNoise(mu={}, sigma={})'.format(self.mu, self.sigma)
 
 def main():
-	ou_noise=OrnsteinUhlenbeckActionNoise(mu=np.zeros(2))
+	ou_noise = OrnsteinUhlenbeckActionNoise(mu=np.zeros(2))
 	plt.figure('data')
-	y=[]
-	t=np.linspace(0,100,1000)
+	y = []
+	t = np.linspace(0,100,1000)
 	for _ in t:
 		y.append(ou_noise())
-	plt.plot(t,y)
+	plt.plot(t, y)
 	plt.show()
 
-if __name__=="__main__":
+if __name__ == "__main__":
 	main()
